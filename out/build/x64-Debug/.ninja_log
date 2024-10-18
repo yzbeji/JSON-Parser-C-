@@ -1,0 +1,7 @@
+# ninja log v5
+7	250	7509655911636142	CMakeFiles/json_eval.dir/main.cpp.obj	2ec283650f5676e5
+251	754	7509655912574997	json_eval.exe	fc36cb86fbfd9f39
+3	256	7509675243646242	CMakeFiles/json_eval.dir/main.cpp.obj	24426775e0203fcd
+8	257	7509675243646242	tokenizer/CMakeFiles/tokenizer.dir/tokenizer.cpp.obj	a8d4c0cb57fc8641
+257	291	7509675243964187	tokenizer/tokenizer.lib	5ee0e153ccd4b061
+291	812	7509675244793348	json_eval.exe	92c2f8d3f75536ed

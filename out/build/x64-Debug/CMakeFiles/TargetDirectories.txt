@@ -1,0 +1,6 @@
+C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/CMakeFiles/json_eval.dir
+C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/tokenizer/CMakeFiles/tokenizer.dir
+C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/tokenizer/CMakeFiles/edit_cache.dir
+C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/tokenizer/CMakeFiles/rebuild_cache.dir
