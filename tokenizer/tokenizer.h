@@ -5,7 +5,9 @@
 #define UNDEFINED_VALUE "NO_VALUE"
 using namespace std;
 
-const enum class Type
+constexpr char correctCharacters[] = { '\r', '\n', '\t', ' ', '[', ']', '{', '}', ':', ',' };
+
+constexpr enum class Type
 {
 	UNDEFINED,
 	NULL_VALUE,
@@ -35,10 +37,12 @@ private:
 	vector<Token> tokens;		
 	string jsonString;
 	size_t index;
+	bool IsCharacterCorrect(const char& currentCharacter) const;
 	void SkipWhitespaces();
 public:
+	/* vector<Token>::iterator DebuggerForJsonArray(); */
 	Tokenizer(string jsonString) : jsonString(jsonString), index(0) { }
 	void Tokenize();
-	void PrintTokens();
+	void PrintTokens() const;
 };
 

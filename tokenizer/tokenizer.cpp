@@ -1,12 +1,14 @@
+#include "tokenizer.h"
+#include "tokenizer.h"
 #include <tokenizer.h>
 
 using namespace std;
 
-void Tokenizer::PrintTokens()
+void Tokenizer::PrintTokens() const
 {
 	for (auto& token : tokens)
 	{
-		cout << token.value;
+		cout << token.value << " ";
 	}
 }
 
@@ -19,6 +21,14 @@ void Tokenizer::SkipWhitespaces()
 		this->index < jsonString.size())
 		this->index++;
 }
+
+/* vector<Token>::iterator Tokenizer::DebuggerForJsonArray()
+{
+	vector<Token>::iterator token = tokens.begin();
+	while (token->type != Type::SQUARE_BRACKET_OPEN)
+		token++;
+	return token;
+} */
 
 void Tokenizer::Tokenize()
 {
@@ -63,6 +73,7 @@ void Tokenizer::Tokenize()
 			token.value = "null";
 			break;
 		}
+		/* Assumed that you've written true & false correct */
 		case 't':
 		{
 			token.type = Type::BOOLEAN;
@@ -100,14 +111,15 @@ void Tokenizer::Tokenize()
 			string value("");
 			value += jsonString[this->index];
 			this->index++;
-			while (jsonString[this->index] != '"' && this->index < jsonString.size())
+			while (this->index < jsonString.size() && jsonString[this->index] != '"')
 			{
 				value += jsonString[this->index];
 				this->index++;
 			}
 			try
 			{
-				if (this->index == jsonString.size())
+
+				if ((this->index == jsonString.size()) || (index + 1 < jsonString.size() && IsCharacterCorrect(jsonString[index + 1]) == false))
 				{
 					throw runtime_error(R"(Strings should  start / end with '"'! \n)");
 				}
@@ -143,14 +155,19 @@ void Tokenizer::Tokenize()
 				token.value = jsonString[this->index];
 				token.hasValue = true;
 				this->index++;
-				while ((jsonString[this->index] >= '0' && jsonString[this->index] <= '9') || jsonString[this->index] == '.')
+				while ((jsonString[this->index] >= '0' && 
+					    jsonString[this->index] <= '9') || 
+					   (jsonString[this->index] == '.' && 
+					   (jsonString[this->index - 1] >= '0' && 
+						jsonString[this->index - 1] <= '9')))
 				{
 					token.value += jsonString[this->index];
 					this->index++;
 				}
 				if (jsonString[this->index] == '+' ||
 					jsonString[this->index] == '-' ||
-					jsonString[this->index] == '.')
+					jsonString[this->index] == '.' ||
+					jsonString[this->index - 1] == '.')
 					throw runtime_error(R"(Numbers end with (0 -> 9)! \n)");
 			}
 			catch (exception& error)
@@ -164,4 +181,12 @@ void Tokenizer::Tokenize()
 		tokens.push_back(token);
 		SkipWhitespaces();
 	}
+}
+
+bool Tokenizer::IsCharacterCorrect(const char& currentCharacter) const
+{
+	if (find(begin(correctCharacters), end(correctCharacters), currentCharacter) == end(correctCharacters))
+		return false;
+	else 
+		return true;
 }

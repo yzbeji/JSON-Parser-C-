@@ -1,14 +1,15 @@
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
-#include <tokenizer.h>	
+#include <tokenizer.h>
+#include <parser.h>
 
 using namespace std;
 
 
 int main(int argc, char* argv[])
 {
-	if(argc < 2)
+	if(argc < 2/*0*/)
 	{
 		printf("Missing input file! \n");
 		return -1;
@@ -30,7 +31,7 @@ int main(int argc, char* argv[])
 
 			char* buffer = new char[length + 1];
 			buffer[length] = '\0';
-
+			
 			jsonFile.read(buffer, length);
 			jsonFile.close();
 				
@@ -39,7 +40,12 @@ int main(int argc, char* argv[])
 
 			Tokenizer tokenizer(jsonString);
 			tokenizer.Tokenize();
-			tokenizer.PrintTokens();	
+			tokenizer.PrintTokens();
+			cout << endl << endl << endl;
+
+			/* auto it = tokenizer.DebuggerForJsonArray();
+			auto jsonArray = Parser::ParseArray(++it).GetArray(); 
+			cout << jsonArray; */
 		}
 	}	
 	return 0;
