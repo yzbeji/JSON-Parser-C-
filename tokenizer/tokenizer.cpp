@@ -22,13 +22,13 @@ void Tokenizer::SkipWhitespaces()
 		this->index++;
 }
 
-/* vector<Token>::iterator Tokenizer::DebuggerForJsonArray()
+vector<Token>::iterator Tokenizer::DebuggerForJsonArray()
 {
 	vector<Token>::iterator token = tokens.begin();
 	while (token->type != Type::SQUARE_BRACKET_OPEN)
 		token++;
 	return token;
-} */
+} 
 
 void Tokenizer::Tokenize()
 {
@@ -121,7 +121,7 @@ void Tokenizer::Tokenize()
 
 				if ((this->index == jsonString.size()) || (index + 1 < jsonString.size() && IsCharacterCorrect(jsonString[index + 1]) == false))
 				{
-					throw runtime_error(R"(Strings should  start / end with '"'! \n)");
+					throw runtime_error(R"(Strings should  start / end with '"')");
 				}
 				else
 				{
@@ -168,7 +168,7 @@ void Tokenizer::Tokenize()
 					jsonString[this->index] == '-' ||
 					jsonString[this->index] == '.' ||
 					jsonString[this->index - 1] == '.')
-					throw runtime_error(R"(Numbers end with (0 -> 9)! \n)");
+					throw runtime_error(R"(Numbers end with (0 -> 9))");
 			}
 			catch (exception& error)
 			{

@@ -9,17 +9,17 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	if(argc < 2/*0*/)
+	if(argc < 0/*2*/)
 	{
-		printf("Missing input file! \n");
+		printf("Missing input file");
 		return -1;
 	}
 	else
 	{
-		ifstream jsonFile(argv[1], ifstream::binary);
+		ifstream jsonFile(R"(C:\Users\Stefan\Desktop\jetbrains\test.json)", ifstream::binary);
 		if (jsonFile.fail()) 
 		{
-			printf("File was not found! \n");
+			printf("File was not found");
 			return -1;
 		}
 		else
@@ -43,9 +43,11 @@ int main(int argc, char* argv[])
 			tokenizer.PrintTokens();
 			cout << endl << endl << endl;
 
-			/* auto it = tokenizer.DebuggerForJsonArray();
-			auto jsonArray = Parser::ParseArray(++it).GetArray(); 
-			cout << jsonArray; */
+			auto it = tokenizer.DebuggerForJsonArray();
+			auto end = tokenizer.ReturnEnd();
+			unsigned int numberOfArraysOpen = 0;
+			string jsonArray = Parser::ParseArray(++it, end).GetRawValue(); 
+			cout << jsonArray;
 		}
 	}	
 	return 0;

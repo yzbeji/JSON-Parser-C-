@@ -7,7 +7,7 @@ using namespace std;
 
 constexpr char correctCharacters[] = { '\r', '\n', '\t', ' ', '[', ']', '{', '}', ':', ',' };
 
-constexpr enum class Type
+enum class Type
 {
 	UNDEFINED,
 	NULL_VALUE,
@@ -40,7 +40,8 @@ private:
 	bool IsCharacterCorrect(const char& currentCharacter) const;
 	void SkipWhitespaces();
 public:
-	/* vector<Token>::iterator DebuggerForJsonArray(); */
+	vector<Token>::iterator DebuggerForJsonArray();
+	vector<Token>::const_iterator ReturnEnd() const { return tokens.end(); }
 	Tokenizer(string jsonString) : jsonString(jsonString), index(0) { }
 	void Tokenize();
 	void PrintTokens() const;

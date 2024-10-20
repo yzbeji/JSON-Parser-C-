@@ -7,9 +7,9 @@
   },
   "ExpandedNodes": [
     "",
-    "\\out",
+    "\\parser",
     "\\tokenizer"
   ],
-  "SelectedNode": "\\CMakeLists.txt",
+  "SelectedNode": "\\main.cpp",
   "PreviewInSolutionExplorer": false
 }

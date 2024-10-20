@@ -1,13 +1,6 @@
-#include "parser.h"
 #include <parser.h>
 
-
-string Object::GetObject() const	
-{
-	return rawObject;
-}
-
-variant<string, int, bool, double, Array, Object> Object::operator[](const string value) const 
+variant<string, int, bool, double, Array, Object> Object::operator[](const string& value) const	
 {
 	try
 	{
@@ -24,28 +17,43 @@ variant<string, int, bool, double, Array, Object> Object::operator[](const strin
 	}
 }
 
-string Array::GetArray() const
+void Object::AddNotAnArrayOrObject(const vector<Token>::const_iterator& token)
 {
-	return rawArray;
-}
-
-void Array::AddToArrayNotAnArrayOrObject(const string& value, const Type& type) 
-{
-	switch (type)
+	const vector<Token>::const_iterator& nextToken = token + 1;
+	const vector<Token>::const_iterator& previousToken = token - 1;
+	switch (nextToken->type)	
 	{
 		case Type::NUMBER:
 		{
-			arrayValues.push_back(stod(value));
-			break;
+			objectValues.insert(make_pair(previousToken->value, stod(nextToken->value)));
+			return;
 		}
 		case Type::STRING:
 		case Type::BOOLEAN:
 		case Type::NULL_VALUE:
 		{
-			arrayValues.push_back(value);
-			break;
+			objectValues.insert(make_pair(previousToken->value, nextToken->value));
+			return;
 		}
+	}
+}
 
+void Array::AddNotAnArrayOrObject(const vector<Token>::const_iterator& token)
+{
+	switch (token->type)
+	{
+		case Type::NUMBER:
+		{
+			arrayValues.push_back(stod(token->value));
+			return;
+		}
+		case Type::STRING:
+		case Type::BOOLEAN:
+		case Type::NULL_VALUE:
+		{
+			arrayValues.push_back(token->value);
+			return;
+		}
 	}
 }
 
