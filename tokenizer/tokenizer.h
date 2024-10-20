@@ -41,6 +41,7 @@ private:
 	void SkipWhitespaces();
 public:
 	vector<Token>::iterator DebuggerForJsonArray();
+	vector<Token>::iterator DebuggerForJsonObject() { return tokens.begin(); }
 	vector<Token>::const_iterator ReturnEnd() const { return tokens.end(); }
 	Tokenizer(string jsonString) : jsonString(jsonString), index(0) { }
 	void Tokenize();

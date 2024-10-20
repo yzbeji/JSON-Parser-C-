@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-		ifstream jsonFile(R"(C:\Users\Stefan\Desktop\jetbrains\test.json)", ifstream::binary);
+		ifstream jsonFile(R"(C:\Users\Stefan\Desktop\jetbrains\third-test.json)", ifstream::binary);
 		if (jsonFile.fail()) 
 		{
 			printf("File was not found");
@@ -42,12 +42,15 @@ int main(int argc, char* argv[])
 			tokenizer.Tokenize();
 			tokenizer.PrintTokens();
 			cout << endl << endl << endl;
-
-			auto it = tokenizer.DebuggerForJsonArray();
+			/* Testing purposes
+			auto begin = tokenizer.DebuggerForJsonObject();
+			auto it = tokenizer.DebuggerForJsonObject();
 			auto end = tokenizer.ReturnEnd();
 			unsigned int numberOfArraysOpen = 0;
-			string jsonArray = Parser::ParseArray(++it, end).GetRawValue(); 
-			cout << jsonArray;
+			Object jsonArray = Parser::ParseObject(++it, begin, end);
+			string j = jsonArray.GetRawValue();
+			cout << j;
+			*/		
 		}
 	}	
 	return 0;
