@@ -6,7 +6,7 @@ variant<string, int, bool, double, Array, Object> Object::operator[](const strin
 	{
 		auto key = objectValues.find(value);
 		if (key == objectValues.end())
-			throw invalid_argument("Value does not exist");
+			throw invalid_argument("Key or value that you are trying to access does not exist");
 		else
 			return key->second;
 	}
@@ -62,7 +62,7 @@ variant<string, int, bool, double, Array, Object> Array::operator[](int index) c
 	try
 	{
 		if (index < 0 || index > arrayValues.size())
-			throw out_of_range("Invalid index");
+			throw out_of_range("Value in the array you are trying to acces does not exist");
 		else
 			return arrayValues[index];
 	}

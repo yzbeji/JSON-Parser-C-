@@ -7,3 +7,6 @@ C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/parser/CMakeFiles/rebuild_
 C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/tokenizer/CMakeFiles/tokenizer.dir
 C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/tokenizer/CMakeFiles/edit_cache.dir
 C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/tokenizer/CMakeFiles/rebuild_cache.dir
+C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/json/CMakeFiles/json.dir
+C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/json/CMakeFiles/edit_cache.dir
+C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/json/CMakeFiles/rebuild_cache.dir

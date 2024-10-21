@@ -1,5 +1,3 @@
-#include "tokenizer.h"
-#include "tokenizer.h"
 #include <tokenizer.h>
 
 using namespace std;
@@ -21,14 +19,6 @@ void Tokenizer::SkipWhitespaces()
 		this->index < jsonString.size())
 		this->index++;
 }
-
-vector<Token>::iterator Tokenizer::DebuggerForJsonArray()
-{
-	vector<Token>::iterator token = tokens.begin();
-	while (token->type != Type::SQUARE_BRACKET_OPEN)
-		token++;
-	return token;
-} 
 
 void Tokenizer::Tokenize()
 {
@@ -183,7 +173,7 @@ void Tokenizer::Tokenize()
 	}
 }
 
-bool Tokenizer::IsCharacterCorrect(const char& currentCharacter) const
+constexpr bool Tokenizer::IsCharacterCorrect(const char& currentCharacter) const
 {
 	if (find(begin(correctCharacters), end(correctCharacters), currentCharacter) == end(correctCharacters))
 		return false;

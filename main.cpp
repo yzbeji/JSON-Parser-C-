@@ -3,10 +3,10 @@
 #include <stdio.h>
 #include <tokenizer.h>
 #include <parser.h>
-
+#include <json.h>
 using namespace std;
-
-
+using json = yzbeji::json;
+	
 int main(int argc, char* argv[])
 {
 	if(argc < 0/*2*/)
@@ -42,15 +42,9 @@ int main(int argc, char* argv[])
 			tokenizer.Tokenize();
 			tokenizer.PrintTokens();
 			cout << endl << endl << endl;
-			/* Testing purposes
-			auto begin = tokenizer.DebuggerForJsonObject();
-			auto it = tokenizer.DebuggerForJsonObject();
-			auto end = tokenizer.ReturnEnd();
-			unsigned int numberOfArraysOpen = 0;
-			Object jsonArray = Parser::ParseObject(++it, begin, end);
-			string j = jsonArray.GetRawValue();
-			cout << j;
-			*/		
+		
+			// Implement if iterator is not at the end there is garbage characters
+			json j(jsonString);	
 		}
 	}	
 	return 0;
