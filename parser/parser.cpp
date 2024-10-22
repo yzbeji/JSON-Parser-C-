@@ -1,26 +1,26 @@
 #include <parser.h>
 
-variant<string, int, bool, double, Array, Object> Object::operator[](const string& value) const	
+Wrapper Object::operator[](const std::string& value) const	
 {
 	try
 	{
 		auto key = objectValues.find(value);
 		if (key == objectValues.end())
-			throw invalid_argument("Key or value that you are trying to access does not exist");
+			throw std::invalid_argument("Key or value that you are trying to access does not exist");
 		else
-			return key->second;
+			return Wrapper(key->second);
 	}
-	catch (exception& error)
+	catch (std::exception& error)	
 	{
 		printf("%s", error.what());
-		return -1;
+		exit(-1);
 	}
 }
 
-void Object::AddNotAnArrayOrObject(const vector<Token>::const_iterator& token)
+void Object::AddNotAnArrayOrObject(const std::vector<Token>::const_iterator& token)
 {
-	const vector<Token>::const_iterator& nextToken = token + 1;
-	const vector<Token>::const_iterator& previousToken = token - 1;
+	const std::vector<Token>::const_iterator& nextToken = token + 1;
+	const std::vector<Token>::const_iterator& previousToken = token - 1;
 	switch (nextToken->type)	
 	{
 		case Type::NUMBER:
@@ -38,13 +38,23 @@ void Object::AddNotAnArrayOrObject(const vector<Token>::const_iterator& token)
 	}
 }
 
-void Array::AddNotAnArrayOrObject(const vector<Token>::const_iterator& token)
+void Array::AddNotAnArrayOrObject(const std::vector<Token>::const_iterator& token)
 {
 	switch (token->type)
 	{
 		case Type::NUMBER:
 		{
-			arrayValues.push_back(stod(token->value));
+			if ((token->value).find('.', 0) != std::string::npos)
+			{
+				arrayValues.push_back(stod(token->value));
+			}
+			else
+			{
+				std::istringstream sstream(token->value);
+				int integer;
+				sstream >> integer;
+				arrayValues.push_back(integer);
+			}
 			return;
 		}
 		case Type::STRING:
@@ -57,16 +67,16 @@ void Array::AddNotAnArrayOrObject(const vector<Token>::const_iterator& token)
 	}
 }
 
-variant<string, int, bool, double, Array, Object> Array::operator[](int index) const
+Wrapper Array::operator[](int index) const	
 {
 	try
 	{
 		if (index < 0 || index > arrayValues.size())
-			throw out_of_range("Value in the array you are trying to acces does not exist");
+			throw std::out_of_range("Value in the array you are trying to acces does not exist");
 		else
-			return arrayValues[index];
+			return Wrapper(arrayValues[index]);	
 	}
-	catch (exception& error)
+	catch (std::exception& error)
 	{
 		printf("%s", error.what());
 	}

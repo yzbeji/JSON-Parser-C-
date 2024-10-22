@@ -4,19 +4,19 @@
 #include <tokenizer.h>
 #include <parser.h>
 #include <json.h>
-using namespace std;
+
 using json = yzbeji::json;
 	
 int main(int argc, char* argv[])
 {
-	if(argc < 0/*2*/)
+	if(argc < 0)
 	{
 		printf("Missing input file");
 		return -1;
 	}
 	else
 	{
-		ifstream jsonFile(R"(C:\Users\Stefan\Desktop\jetbrains\third-test.json)", ifstream::binary);
+		std::ifstream jsonFile(argv[1], std::ifstream::binary);
 		if (jsonFile.fail()) 
 		{
 			printf("File was not found");
@@ -35,16 +35,16 @@ int main(int argc, char* argv[])
 			jsonFile.read(buffer, length);
 			jsonFile.close();
 				
-			string jsonString(buffer, length);	
+			std::string jsonString(buffer, length);	
 			delete[] buffer;
 
 			Tokenizer tokenizer(jsonString);
 			tokenizer.Tokenize();
 			tokenizer.PrintTokens();
-			cout << endl << endl << endl;
-		
-			// Implement if iterator is not at the end there is garbage characters
-			json j(jsonString);	
+			std::cout << std::endl << std::endl;	
+			json j(jsonString);
+			std::string js = j["\"web-app\""]["\"servlet\""];
+			std::cout << js;
 		}
 	}	
 	return 0;

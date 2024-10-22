@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 #define UNDEFINED_VALUE "NO_VALUE"
-using namespace std;
+
 
 constexpr char correctCharacters[] = { '\r', '\n', '\t', ' ', '[', ']', '{', '}', ':', ',' };
 enum class Type
@@ -25,7 +25,7 @@ class Token
 {
 public:
 	Token() : hasValue(false), type(Type::UNDEFINED), value(UNDEFINED_VALUE) { }
-	string value;
+	std::string value;
 	Type type;
 	bool hasValue;
 };
@@ -33,15 +33,15 @@ public:
 class Tokenizer
 {
 private:
-	vector<Token> tokens;		
-	string jsonString;
+	std::vector<Token> tokens;		
+	std::string jsonString;
 	size_t index;
-	constexpr bool IsCharacterCorrect(const char& currentCharacter) const;
+	constexpr bool IsCharacterCorrect(const char& currentCharacter) const noexcept;
 	void SkipWhitespaces();
 public:
-	vector<Token>::const_iterator ReturnBegin() const { return tokens.begin(); }
-	vector<Token>::const_iterator ReturnEnd() const { return tokens.end(); }
-	Tokenizer(string jsonString) : jsonString(jsonString), index(0) { }
+	std::vector<Token>::const_iterator ReturnBegin() const noexcept { return tokens.begin(); }
+	std::vector<Token>::const_iterator ReturnEnd() const noexcept{ return tokens.end(); }
+	Tokenizer(std::string jsonString) : jsonString(jsonString), index(0) { }
 	void Tokenize();
 	void PrintTokens() const;
 };

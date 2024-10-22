@@ -3,24 +3,19 @@
 #include <variant>
 namespace yzbeji	
 {
-	typedef variant<string, int, bool, double, Array, Object> valueTypes;
-
 	class json
 	{
-		private:
-			Tokenizer tokenizer;
-			unique_ptr<Object> object;
-			vector<Token>::const_iterator token;
-			vector<Token>::const_iterator begin;
-			vector<Token>::const_iterator end;
-		public:
-			json(const string& jsonString);
-			void operator [](const string& key)
-			{	
-				return;
-			}
-		private:
-			void CheckForRemainingGarbageCharacters(const vector<Token>::const_iterator&, const vector<Token>::const_iterator&) const;
+	private:
+		Tokenizer tokenizer;
+		std::unique_ptr<Object> object;
+		std::vector<Token>::const_iterator token;
+		std::vector<Token>::const_iterator begin;
+		std::vector<Token>::const_iterator end;
+	public:
+		json(const std::string& jsonString);
+		Wrapper operator [](const char* key) { return Wrapper((*object)[key]); }	
+	private:
+		void CheckForRemainingGarbageCharacters(const std::vector<Token>::const_iterator&, const std::vector<Token>::const_iterator&) const;
 	};
 }
 

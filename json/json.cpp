@@ -21,7 +21,7 @@ json::json(const string& jsonString) : tokenizer(jsonString)
 	}
 }
 
-void json::CheckForRemainingGarbageCharacters(const vector<Token>::const_iterator& token, const vector<Token>::const_iterator& end) const
+void json::CheckForRemainingGarbageCharacters(const vector<Token>::const_iterator& token, const vector<Token>::const_iterator& end) const 
 {
 	if (token != end)
 	{

@@ -1,12 +1,10 @@
 #include <tokenizer.h>
 
-using namespace std;
-
 void Tokenizer::PrintTokens() const
 {
 	for (auto& token : tokens)
 	{
-		cout << token.value << " ";
+		std::cout << token.value << " ";
 	}
 }
 
@@ -80,6 +78,7 @@ void Tokenizer::Tokenize()
 			this->index += 5;
 			break;
 		}
+		/* ----------------------------------------------- */
 		case ',':
 		{
 			token.type = Type::COMMA;
@@ -98,7 +97,7 @@ void Tokenizer::Tokenize()
 		{
 			token.type = Type::STRING;
 			token.hasValue = true;
-			string value("");
+			std::string value("");
 			value += jsonString[this->index];
 			this->index++;
 			while (this->index < jsonString.size() && jsonString[this->index] != '"')
@@ -111,7 +110,7 @@ void Tokenizer::Tokenize()
 
 				if ((this->index == jsonString.size()) || (index + 1 < jsonString.size() && IsCharacterCorrect(jsonString[index + 1]) == false))
 				{
-					throw runtime_error(R"(Strings should  start / end with '"')");
+					throw std::runtime_error(R"(Strings should  start / end with '"')");
 				}
 				else
 				{
@@ -120,7 +119,7 @@ void Tokenizer::Tokenize()
 				}
 				token.value = value;
 			}
-			catch (exception& error)
+			catch (std::exception& error)
 			{
 				printf("%s", error.what());
 				exit(-1);
@@ -158,9 +157,9 @@ void Tokenizer::Tokenize()
 					jsonString[this->index] == '-' ||
 					jsonString[this->index] == '.' ||
 					jsonString[this->index - 1] == '.')
-					throw runtime_error(R"(Numbers end with (0 -> 9))");
+					throw std::runtime_error(R"(Numbers end with (0 -> 9))");
 			}
-			catch (exception& error)
+			catch (std::exception& error)
 			{
 				printf("%s", error.what());
 				exit(-1);
@@ -173,9 +172,9 @@ void Tokenizer::Tokenize()
 	}
 }
 
-constexpr bool Tokenizer::IsCharacterCorrect(const char& currentCharacter) const
+constexpr bool Tokenizer::IsCharacterCorrect(const char& currentCharacter) const noexcept
 {
-	if (find(begin(correctCharacters), end(correctCharacters), currentCharacter) == end(correctCharacters))
+	if (std::find(std::begin(correctCharacters), std::end(correctCharacters), currentCharacter) == std::end(correctCharacters))
 		return false;
 	else 
 		return true;

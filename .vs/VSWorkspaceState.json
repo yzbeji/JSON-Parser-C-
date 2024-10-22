@@ -7,9 +7,10 @@
   },
   "ExpandedNodes": [
     "",
+    "\\json",
     "\\parser",
     "\\tokenizer"
   ],
-  "SelectedNode": "\\main.cpp",
+  "SelectedNode": "\\parser\\parser.cpp",
   "PreviewInSolutionExplorer": false
 }

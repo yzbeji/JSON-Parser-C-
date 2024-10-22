@@ -1,14 +1,20 @@
-{ 
+{
   "a": {
     "b": [
-      1,
       2,
-      [ 11, 12 ],
-      [ 1, 2, 3, 4, 5 ],
-      [ false, false, false, false, true ],
-      false,
-      true,
-      []
+      "c",
+      [
+        [
+          11,
+          12,
+          { "Stefan": "Bejan" },
+          [ -2.25, 2, 3, 4, 5 ],
+          [ false, false, false, false, true ],
+          false,
+          true,
+          []
+        ]
+      ]
     ]
   }
 }
