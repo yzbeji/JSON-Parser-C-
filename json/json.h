@@ -1,4 +1,5 @@
 #include <parser.h>
+#include <tokenizer.h>
 #include <memory>
 #include <variant>
 namespace yzbeji	
@@ -12,7 +13,8 @@ namespace yzbeji
 		std::vector<Token>::const_iterator begin;
 		std::vector<Token>::const_iterator end;
 	public:
-		json(const std::string& jsonString);
+		explicit json(const std::string& jsonString);
+		explicit json(std::ifstream& jsonFile);
 		Wrapper operator [](const char* key) { return Wrapper((*object)[key]); }	
 	private:
 		void CheckForRemainingGarbageCharacters(const std::vector<Token>::const_iterator&, const std::vector<Token>::const_iterator&) const;

@@ -4,9 +4,9 @@
 #include <tokenizer.h>
 #include <parser.h>
 #include <json.h>
+#include <argument.h>
 
-using json = yzbeji::json;
-	
+
 int main(int argc, char* argv[])
 {
 	if(argc < 0)
@@ -16,36 +16,18 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-		std::ifstream jsonFile(argv[1], std::ifstream::binary);
-		if (jsonFile.fail()) 
+		std::cout << std::endl << std::endl;
+		// std::ifstream file(argv[1], std::ios::binary);
+		// yzbeji::json j(file);		
+		// std::string js = (j["\"web-app\""]["\"servlet\""][0]["\"servlet-name\""][1]);			
+		// std::cout << js << std::endl << std::endl;
+		if (argc == 2)
 		{
-			printf("File was not found");
-			return -1;
+			printf("%s", "What do you want to do?");
+			exit(-1);
 		}
-		else
-		{
-			jsonFile.seekg(0, jsonFile.end);
-			size_t length = jsonFile.tellg();
-			jsonFile.seekg(0, jsonFile.beg);
-
-
-			char* buffer = new char[length + 1];
-			buffer[length] = '\0';
-			
-			jsonFile.read(buffer, length);
-			jsonFile.close();
-				
-			std::string jsonString(buffer, length);	
-			delete[] buffer;
-
-			Tokenizer tokenizer(jsonString);
-			tokenizer.Tokenize();
-			tokenizer.PrintTokens();
-			std::cout << std::endl << std::endl;	
-			json j(jsonString);
-			std::string js = j["\"web-app\""]["\"servlet\""];
-			std::cout << js;
-		}
+		argument arg("max(a.b[0], 10, a.b[1], 15)");
+		arg.ParseFunctionArguments();
 	}	
 	return 0;
 }

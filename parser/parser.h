@@ -5,6 +5,7 @@
 #include <vector>
 #include <stdio.h>
 #include <unordered_map>
+#include <type_traits>
 
 
 class Wrapper;
@@ -29,6 +30,7 @@ private:
 	std::unordered_map<std::string, std::variant<std::string, int, bool, double, Array, Object>> objectValues;
 public:
 	Object() : ArrayOrObject(1) { }
+	const size_t GetSize() const noexcept { return objectValues.size(); }
 	Wrapper operator[](const std::string& value) const;	
 	void AddNotAnArrayOrObject(const std::vector<Token>::const_iterator& token) override;
 	template<typename T>
@@ -41,6 +43,7 @@ private:
 	std::vector<std::variant<std::string, int, bool, double, Array, Object>>arrayValues;
 public:
 	Array() : ArrayOrObject(0) { }
+	const size_t GetSize() const noexcept { return arrayValues.size(); }	
 	void AddNotAnArrayOrObject(const std::vector<Token>::const_iterator& token) override;	
 	Wrapper operator[](int index) const;	
 	template<typename T>
@@ -60,30 +63,49 @@ public:
 		return std::visit([&key](auto&& arg) -> Wrapper {
 			if constexpr (std::is_same_v<std::decay_t<decltype(arg)>, Object>)
 			{
-				return Wrapper(static_cast<Object>(arg)[key]);		
+				return Wrapper(static_cast<Object>(arg)[key]);
 			}
 			else
 			{
-				throw std::bad_variant_access();		
+				throw std::bad_variant_access();
 			}
-		}, value);
+			}, value);
 	}
-	operator int()
+	Wrapper operator[](const int& index) const
 	{
-		return 1;
-	}
-	Wrapper operator[](const size_t& index) const
-	{
-		return std::visit([&index](auto&& arg) -> Wrapper  {
+		return std::visit([&index](auto&& arg) -> Wrapper {
 			if constexpr (std::is_same_v<std::decay_t<decltype(arg)>, Array>)
 			{
-				return Wrapper((static_cast<Array>(arg))[index]);	
+				return Wrapper((static_cast<Array>(arg))[index]);
 			}
 			else
 			{
-				throw std::bad_variant_access();	
+				throw std::bad_variant_access();
 			}
-		}, value);
+			}, value);
+	}
+	const size_t GetSize() const noexcept
+	{
+		return std::visit([](auto&& arg) -> size_t
+		{
+				if constexpr (std::is_same_v<std::decay_t<decltype(arg)>, Array>)
+				{
+					return static_cast<Array>(arg).GetSize();
+				}
+				else if constexpr (std::is_same_v<std::decay_t<decltype(arg)>, Array>)	
+				{
+					return static_cast<Object>(arg).GetSize();			
+				}
+				else if constexpr (std::is_same_v<std::decay_t<decltype(arg)>, std::string>)	
+				{
+					return static_cast<std::string>(arg).size();
+				}
+				else 
+				{	
+					return 1;
+				}
+
+		}, this->value);
 	}
 	operator std::string() const
 	{
@@ -106,16 +128,16 @@ public:
 			}
 			else if constexpr (std::is_same_v < std::decay_t<decltype(arg)>, int>)
 			{
-				return std::to_string(arg);	
+				return std::to_string(arg);
 			}
-			else if constexpr (std::is_same_v < std::decay_t<decltype(arg)>, double> )
+			else if constexpr (std::is_same_v < std::decay_t<decltype(arg)>, double>)
 			{
 				std::ostringstream sstream;
 				sstream << arg;
-				return sstream.str();	
+				return sstream.str();
 			}
-			throw std::bad_variant_access();	
-		}, value);
+			throw std::bad_variant_access();
+			}, value);
 	}
 };
 

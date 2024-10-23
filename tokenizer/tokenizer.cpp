@@ -1,5 +1,6 @@
+#include "tokenizer.h"
 #include <tokenizer.h>
-
+#include <fstream>
 void Tokenizer::PrintTokens() const
 {
 	for (auto& token : tokens)
@@ -16,6 +17,28 @@ void Tokenizer::SkipWhitespaces()
 		jsonString[this->index] == '\t') &&
 		this->index < jsonString.size())
 		this->index++;
+}
+
+
+Tokenizer::Tokenizer(std::ifstream& jsonFile) : index(0)	
+{
+	if (jsonFile.fail())
+	{
+		printf("File was not found");
+		exit(-1);
+	}
+	else
+	{
+		jsonFile.seekg(0, jsonFile.end);
+		size_t length = jsonFile.tellg();
+		jsonFile.seekg(0, jsonFile.beg);
+		char* buffer = new char[length + 1];
+		buffer[length] = '\0';
+		jsonFile.read(buffer, length);
+		jsonFile.close();
+		this->jsonString = buffer;
+		delete[] buffer;
+	}
 }
 
 void Tokenizer::Tokenize()

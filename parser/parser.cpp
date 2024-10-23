@@ -36,7 +36,7 @@ void Object::AddNotAnArrayOrObject(const std::vector<Token>::const_iterator& tok
 			return;
 		}
 	}
-}
+}	
 
 void Array::AddNotAnArrayOrObject(const std::vector<Token>::const_iterator& token)
 {
@@ -57,8 +57,12 @@ void Array::AddNotAnArrayOrObject(const std::vector<Token>::const_iterator& toke
 			}
 			return;
 		}
-		case Type::STRING:
 		case Type::BOOLEAN:
+		{
+			arrayValues.push_back((token->value == "true") ? true : false);
+			return;
+		}
+		case Type::STRING:
 		case Type::NULL_VALUE:
 		{
 			arrayValues.push_back(token->value);

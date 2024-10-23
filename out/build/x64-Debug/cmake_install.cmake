@@ -37,6 +37,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/parser/cmake_install.cmake")
   include("C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/tokenizer/cmake_install.cmake")
   include("C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/json/cmake_install.cmake")
+  include("C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/argument/cmake_install.cmake")
 
 endif()
 

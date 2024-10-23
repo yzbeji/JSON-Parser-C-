@@ -10,3 +10,6 @@ C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/tokenizer/CMakeFiles/rebui
 C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/json/CMakeFiles/json.dir
 C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/json/CMakeFiles/edit_cache.dir
 C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/json/CMakeFiles/rebuild_cache.dir
+C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/argument/CMakeFiles/argument.dir
+C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/argument/CMakeFiles/edit_cache.dir
+C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/argument/CMakeFiles/rebuild_cache.dir

@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
+#include <stdio.h>
 #define UNDEFINED_VALUE "NO_VALUE"
 
 
@@ -41,7 +43,8 @@ private:
 public:
 	std::vector<Token>::const_iterator ReturnBegin() const noexcept { return tokens.begin(); }
 	std::vector<Token>::const_iterator ReturnEnd() const noexcept{ return tokens.end(); }
-	Tokenizer(std::string jsonString) : jsonString(jsonString), index(0) { }
+	Tokenizer(const std::string& jsonString) : jsonString(jsonString), index(0) { }	
+	Tokenizer(std::ifstream& jsonFile);
 	void Tokenize();
 	void PrintTokens() const;
 };
