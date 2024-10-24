@@ -260,6 +260,9 @@ Z_VCPKG_PWSH_PATH:FILEPATH=Z_VCPKG_PWSH_PATH-NOTFOUND
 _VCPKG_INSTALLED_DIR:PATH=C:/Users/Stefan/Desktop/vcpkg/installed
 
 //Dependencies for the target
+argument_LIB_DEPENDS:STATIC=general;json;general;parser;
+
+//Dependencies for the target
 json_LIB_DEPENDS:STATIC=general;parser;
 
 //Dependencies for the target

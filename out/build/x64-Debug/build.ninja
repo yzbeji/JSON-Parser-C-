@@ -65,10 +65,10 @@ build CMakeFiles\json_eval.dir\main.cpp.obj: CXX_COMPILER__json_eval_unscanned_D
 #############################################
 # Link the executable json_eval.exe
 
-build json_eval.exe: CXX_EXECUTABLE_LINKER__json_eval_Debug CMakeFiles\json_eval.dir\main.cpp.obj | parser\parser.lib tokenizer\tokenizer.lib json\json.lib argument\argument.lib parser\parser.lib tokenizer\tokenizer.lib || argument\argument.lib json\json.lib parser\parser.lib tokenizer\tokenizer.lib
+build json_eval.exe: CXX_EXECUTABLE_LINKER__json_eval_Debug CMakeFiles\json_eval.dir\main.cpp.obj | parser\parser.lib tokenizer\tokenizer.lib json\json.lib argument\argument.lib json\json.lib parser\parser.lib tokenizer\tokenizer.lib || argument\argument.lib json\json.lib parser\parser.lib tokenizer\tokenizer.lib
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
-  LINK_LIBRARIES = parser\parser.lib  tokenizer\tokenizer.lib  json\json.lib  argument\argument.lib  parser\parser.lib  tokenizer\tokenizer.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
+  LINK_LIBRARIES = parser\parser.lib  tokenizer\tokenizer.lib  json\json.lib  argument\argument.lib  json\json.lib  parser\parser.lib  tokenizer\tokenizer.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
   OBJECT_DIR = CMakeFiles\json_eval.dir
   POST_BUILD = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\jetbrains\out\build\x64-Debug && C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file C:/Users/Stefan/Desktop/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/json_eval.exe -installedDir C:/Users/Stefan/Desktop/vcpkg/installed/x64-windows/debug/bin -OutVariable out"
   PRE_LINK = cd .
@@ -301,11 +301,11 @@ build json\rebuild_cache: phony json\CMakeFiles\rebuild_cache.util
 #############################################
 # Order-only phony target for argument
 
-build cmake_object_order_depends_target_argument: phony || argument\CMakeFiles\argument.dir
+build cmake_object_order_depends_target_argument: phony || cmake_object_order_depends_target_json cmake_object_order_depends_target_parser cmake_object_order_depends_target_tokenizer
 
 build argument\CMakeFiles\argument.dir\argument.cpp.obj: CXX_COMPILER__argument_unscanned_Debug C$:\Users\Stefan\Desktop\jetbrains\argument\argument.cpp || cmake_object_order_depends_target_argument
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -IC:\Users\Stefan\Desktop\jetbrains\argument
+  INCLUDES = -IC:\Users\Stefan\Desktop\jetbrains\argument -IC:\Users\Stefan\Desktop\jetbrains\json -IC:\Users\Stefan\Desktop\jetbrains\parser -IC:\Users\Stefan\Desktop\jetbrains\tokenizer
   OBJECT_DIR = argument\CMakeFiles\argument.dir
   OBJECT_FILE_DIR = argument\CMakeFiles\argument.dir
   TARGET_COMPILE_PDB = argument\CMakeFiles\argument.dir\argument.pdb
@@ -319,7 +319,7 @@ build argument\CMakeFiles\argument.dir\argument.cpp.obj: CXX_COMPILER__argument_
 #############################################
 # Link the static library argument\argument.lib
 
-build argument\argument.lib: CXX_STATIC_LIBRARY_LINKER__argument_Debug argument\CMakeFiles\argument.dir\argument.cpp.obj
+build argument\argument.lib: CXX_STATIC_LIBRARY_LINKER__argument_Debug argument\CMakeFiles\argument.dir\argument.cpp.obj || json\json.lib parser\parser.lib tokenizer\tokenizer.lib
   LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64
   OBJECT_DIR = argument\CMakeFiles\argument.dir

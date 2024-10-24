@@ -121,7 +121,7 @@ void Tokenizer::Tokenize()
 			token.type = Type::STRING;
 			token.hasValue = true;
 			std::string value("");
-			value += jsonString[this->index];
+			// value += jsonString[this->index];
 			this->index++;
 			while (this->index < jsonString.size() && jsonString[this->index] != '"')
 			{
@@ -137,7 +137,7 @@ void Tokenizer::Tokenize()
 				}
 				else
 				{
-					value += '"';
+					// value += '"';
 					this->index++;
 				}
 				token.value = value;

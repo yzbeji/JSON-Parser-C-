@@ -54,9 +54,7 @@ class Wrapper
 {
 public:
 	std::variant<std::string, int, bool, double, Array, Object> value;
-public:
-	Wrapper& operator = (const Wrapper& wrapper) = delete;		
-	Wrapper(const Wrapper& wrapper) = delete;			
+public:					
 	Wrapper(std::variant<std::string, int, bool, double, Array, Object> value) : value(value) { }
 	Wrapper operator[](const char* key) const
 	{
@@ -83,6 +81,16 @@ public:
 				throw std::bad_variant_access();
 			}
 			}, value);
+	}
+	explicit operator int() const	
+	{
+		return std::visit([](auto&& arg) -> int {
+			if constexpr (std::is_same_v<std::decay_t<decltype(arg)>, int>)
+			{
+				return static_cast<int>(arg);
+			}
+			throw std::bad_variant_access();
+		}, value);
 	}
 	const size_t GetSize() const noexcept
 	{

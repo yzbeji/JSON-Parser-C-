@@ -15,7 +15,8 @@ namespace yzbeji
 	public:
 		explicit json(const std::string& jsonString);
 		explicit json(std::ifstream& jsonFile);
-		Wrapper operator [](const char* key) { return Wrapper((*object)[key]); }	
+		Wrapper operator [](const char* key) { return Wrapper((*object)[key]); }
+		Wrapper ReturnInitialObject() { return Wrapper((*object)); }
 	private:
 		void CheckForRemainingGarbageCharacters(const std::vector<Token>::const_iterator&, const std::vector<Token>::const_iterator&) const;
 	};

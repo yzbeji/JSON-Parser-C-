@@ -1,11 +1,13 @@
 #pragma once
 #include <iostream>
+#include <variant>
 #include <vector>
 #include <string>
 #include <sstream>
 #include <stdexcept>
-#include <type_traits>
-
+#include <json.h>
+#include <parser.h>
+#include <cctype>
 
 class argument	
 {
@@ -37,29 +39,164 @@ private:
 		}
 		return offset;
 	}
-	static std::string RemoveWhitespaces(const std::string& arg)
+	static std::string RemoveWhitespaces(std::string& arg)
 	{
 		std::string result;
 		for(auto& character: arg)
 		{
-			if (isalpha(character) || character == '.' || character == '[' || character == ']' || (character >= '0' && character <= '9'))
+			if (character != ' ' &&	
+				character != '\n' &&	
+				character != '\r' &&		
+				character != '\t')	
 			{
 				result += character;
 			}
 		}
-		return result;
+		return (arg = result);
 	}
 public:
-	void ParseFunctionArguments()
-	{
+	void ParseFunctionArguments(Wrapper& wrapper, const Wrapper& initialWrapper)	
+	{	
 		if (ExtractFunction() == 0)
 		{
 			std::stringstream sstream(argumentString);
 			std::string currentArgument;
 			while (std::getline(sstream, currentArgument, ','))
 			{
-				arguments.push_back(RemoveWhitespaces(currentArgument));
+				RemoveWhitespaces(currentArgument);
+				size_t position = 0;
+				ParseObject(currentArgument, position, wrapper, initialWrapper);
+				std::cout << (std::string)wrapper << std::endl;		
+				arguments.push_back("");
+		
 			}
 		}
+		if (arguments[0] == "size" && (arguments.size() > 2 || arguments.size() == 1))
+		{
+			throw std::runtime_error("Not enough / too many arguments");	
+		}
+	}
+	
+	void ParseObject(const std::string& argument, size_t& position, Wrapper& wrapper, const Wrapper& initialWrapper)
+	{
+		std::string component = ""; 
+		Wrapper* helper = nullptr;
+		while (position != argument.size())
+		{
+			switch (argument[position])
+			{
+				case '[':
+				{
+					if (component != "")
+					{
+						wrapper = wrapper[component.c_str()];
+						component.clear();	
+						component = R"()";	
+					}
+					helper = new Wrapper(initialWrapper); 
+					bool isHelperModified = false;
+					int result = ParseArray(argument, ++position, (*helper), initialWrapper, isHelperModified);
+					wrapper = isHelperModified == true ? wrapper[static_cast<int>(*helper)] : wrapper[result];		
+					delete helper;
+					break;
+				}
+				case '.':
+				{
+					if (component != "")	
+					{
+						wrapper = wrapper[component.c_str()];	
+						component.clear();	
+						component = R"()";	
+					}
+					position += 1;
+					position += 1;
+					break;
+				}
+				default:
+				{
+					component += argument[position];	
+					position += 1;
+					break;
+				}
+			}
+		}	
+		component;
+		if (trim(component) != "")	
+		{
+			wrapper = wrapper[component.c_str()];	
+		}
+	}	
+	static std::string trim(const std::string& str) {	
+		size_t first = str.find_first_not_of(' ');	
+		if (first == std::string::npos) 
+			return "";	
+		size_t last = str.find_last_not_of(' ');	
+		return str.substr(first, (last - first + 1));	
+	}	
+	int ParseArray(const std::string& argument, size_t& position, Wrapper& wrapper, const Wrapper& initialWrapper, bool& isHelperModified)				
+	{
+		std::string component = "";
+		Wrapper* helper = nullptr;
+		while (position != argument.size() && argument[position] != ']')	
+		{
+			switch (argument[position])
+			{
+				case '[':
+				{
+					if (component != "")
+					{
+						wrapper = wrapper[component.c_str()];
+						component.clear();
+						component = "";
+					}
+					component.clear();
+					component = "";
+					helper = new Wrapper(initialWrapper);
+					bool secondIsHelperModified = false;
+					int result = ParseArray(argument, ++position, (*helper), initialWrapper, secondIsHelperModified);	
+					std::cout << (std::string)wrapper << std::endl;
+					wrapper = (secondIsHelperModified == true) ? wrapper[static_cast<int>(*helper)] : wrapper[result];
+					delete helper;
+					break;
+				}
+				case '.':
+				{
+					if (component != "")
+					{
+						wrapper = wrapper[component.c_str()];
+						component.clear();	
+						component = "";
+						isHelperModified = true;	
+					}
+					position += 1;
+					break;
+				}
+				case ']':
+				{
+					position += 1;
+					break;
+				}
+				default:
+				{
+					component += argument[position];
+					position++;
+					break;
+				}
+			}
+		}
+		if (position != argument.size())	
+		{
+			position++;
+		}
+		try {
+			return std::stoi(component);
+		}
+		catch(std:: exception&) {
+			return -1;
+		}
+	}
+	void GetSize(const std::string& argument)
+	{
+
 	}
 };

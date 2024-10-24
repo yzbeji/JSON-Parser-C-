@@ -7,10 +7,12 @@
   },
   "ExpandedNodes": [
     "",
+    "\\argument",
     "\\json",
+    "\\jsonfiles",
     "\\parser",
     "\\tokenizer"
   ],
-  "SelectedNode": "\\json\\json.cpp",
+  "SelectedNode": "\\jsonfiles\\fourth-test.json",
   "PreviewInSolutionExplorer": false
 }
