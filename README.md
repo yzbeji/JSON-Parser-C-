@@ -47,7 +47,7 @@ So... <br>
 - determine the size of the object / array using function `GetSize()` function; <br>
 - cast also possible integers and doubles (Example: `(int)j["a"]["b"][0]` and it will result 2) <br>
 
-So... x2 <br>
+And... x2 <br>
 
 I have also implemented some functions using a separated class named arguments. Here's what you can do: <br>
 
