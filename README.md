@@ -15,7 +15,7 @@ Installed succesfully? Let's move on:
 `./vcpkg install gtest`
 `./vcpkg integrate install`
 
-Tip: Just to be sure it was installed succesfully, run fast `./vcpkg list` and look for gtest.
+Tip: Just to be sure it was installed succesfully, run fast `./vcpkg list` and look for gtest. \n
 Great, one more step to compile and combine all headers blah blah.. I used CMake, so, yeah, you'll need also CMake. (Promise it'll be the last one):
 `./vcpkg install cmake`
 
