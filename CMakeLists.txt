@@ -1,14 +1,11 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(JsonEvaluator)
+project(main)
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
-add_executable(json_eval "./main.cpp")
-add_subdirectory(parser)
-add_subdirectory(tokenizer)
+set(CMAX_CXX_STANDARD_REQUIRED True)
+add_executable(main main.cpp)
 add_subdirectory(json)
-add_subdirectory(argument)
-target_link_libraries(json_eval PUBLIC parser)
-target_link_libraries(json_eval PUBLIC tokenizer)
-target_link_libraries(json_eval PUBLIC json)	
-target_link_libraries(json_eval PUBLIC argument)
+add_subdirectory(arguments)
+target_link_libraries(main PRIVATE json arguments)
+
+

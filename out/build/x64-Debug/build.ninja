@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: JsonEvaluator
+# Project: main
 # Configurations: Debug
 # =============================================================================
 
@@ -39,50 +39,50 @@ include CMakeFiles\rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:\Users\Stefan\Desktop\jetbrains\out\build\x64-Debug\
+cmake_ninja_workdir = C$:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\out\build\x64-Debug\
 # =============================================================================
-# Object build statements for EXECUTABLE target json_eval
+# Object build statements for EXECUTABLE target main
 
 
 #############################################
-# Order-only phony target for json_eval
+# Order-only phony target for main
 
-build cmake_object_order_depends_target_json_eval: phony || cmake_object_order_depends_target_argument cmake_object_order_depends_target_json cmake_object_order_depends_target_parser cmake_object_order_depends_target_tokenizer
+build cmake_object_order_depends_target_main: phony || cmake_object_order_depends_target_arguments cmake_object_order_depends_target_json cmake_object_order_depends_target_parser cmake_object_order_depends_target_tokenizer
 
-build CMakeFiles\json_eval.dir\main.cpp.obj: CXX_COMPILER__json_eval_unscanned_Debug C$:\Users\Stefan\Desktop\jetbrains\main.cpp || cmake_object_order_depends_target_json_eval
+build CMakeFiles\main.dir\main.cpp.obj: CXX_COMPILER__main_unscanned_Debug C$:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\main.cpp || cmake_object_order_depends_target_main
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -IC:\Users\Stefan\Desktop\jetbrains\parser -IC:\Users\Stefan\Desktop\jetbrains\tokenizer -IC:\Users\Stefan\Desktop\jetbrains\json -IC:\Users\Stefan\Desktop\jetbrains\argument
-  OBJECT_DIR = CMakeFiles\json_eval.dir
-  OBJECT_FILE_DIR = CMakeFiles\json_eval.dir
-  TARGET_COMPILE_PDB = CMakeFiles\json_eval.dir\
-  TARGET_PDB = json_eval.pdb
+  INCLUDES = -IC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\include -IC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\parser\include -IC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\parser\tokenizer\include -IC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\arguments\include -IC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\arguments\..\json
+  OBJECT_DIR = CMakeFiles\main.dir
+  OBJECT_FILE_DIR = CMakeFiles\main.dir
+  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
+  TARGET_PDB = main.pdb
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target json_eval
+# Link build statements for EXECUTABLE target main
 
 
 #############################################
-# Link the executable json_eval.exe
+# Link the executable main.exe
 
-build json_eval.exe: CXX_EXECUTABLE_LINKER__json_eval_Debug CMakeFiles\json_eval.dir\main.cpp.obj | parser\parser.lib tokenizer\tokenizer.lib json\json.lib argument\argument.lib json\json.lib parser\parser.lib tokenizer\tokenizer.lib || argument\argument.lib json\json.lib parser\parser.lib tokenizer\tokenizer.lib
+build main.exe: CXX_EXECUTABLE_LINKER__main_Debug CMakeFiles\main.dir\main.cpp.obj | json\json.lib arguments\arguments.lib json\json.lib json\parser\parser.lib json\parser\tokenizer\tokenizer.lib || arguments\arguments.lib json\json.lib json\parser\parser.lib json\parser\tokenizer\tokenizer.lib
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
-  LINK_LIBRARIES = parser\parser.lib  tokenizer\tokenizer.lib  json\json.lib  argument\argument.lib  json\json.lib  parser\parser.lib  tokenizer\tokenizer.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
-  OBJECT_DIR = CMakeFiles\json_eval.dir
-  POST_BUILD = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\jetbrains\out\build\x64-Debug && C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file C:/Users/Stefan/Desktop/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/json_eval.exe -installedDir C:/Users/Stefan/Desktop/vcpkg/installed/x64-windows/debug/bin -OutVariable out"
+  LINK_LIBRARIES = json\json.lib  arguments\arguments.lib  json\json.lib  json\parser\parser.lib  json\parser\tokenizer\tokenizer.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
+  OBJECT_DIR = CMakeFiles\main.dir
+  POST_BUILD = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\out\build\x64-Debug && C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file C:/Users/Stefan/Desktop/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary C:/Users/Stefan/Desktop/finallib/JSON-Parser-C-/out/build/x64-Debug/main.exe -installedDir C:/Users/Stefan/Desktop/vcpkg/installed/x64-windows/debug/bin -OutVariable out"
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = CMakeFiles\json_eval.dir\
-  TARGET_FILE = json_eval.exe
-  TARGET_IMPLIB = json_eval.lib
-  TARGET_PDB = json_eval.pdb
+  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
+  TARGET_FILE = main.exe
+  TARGET_IMPLIB = main.lib
+  TARGET_PDB = main.pdb
 
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\jetbrains\out\build\x64-Debug && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\out\build\x64-Debug && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -93,7 +93,7 @@ build edit_cache: phony CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\jetbrains\out\build\x64-Debug && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Stefan\Desktop\jetbrains -BC:\Users\Stefan\Desktop\jetbrains\out\build\x64-Debug"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\out\build\x64-Debug && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Stefan\Desktop\finallib\JSON-Parser-C- -BC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -102,133 +102,7 @@ build rebuild_cache: phony CMakeFiles\rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/Users/Stefan/Desktop/jetbrains/CMakeLists.txt
-# =============================================================================
-
-# =============================================================================
-# Object build statements for STATIC_LIBRARY target parser
-
-
-#############################################
-# Order-only phony target for parser
-
-build cmake_object_order_depends_target_parser: phony || cmake_object_order_depends_target_tokenizer
-
-build parser\CMakeFiles\parser.dir\parser.cpp.obj: CXX_COMPILER__parser_unscanned_Debug C$:\Users\Stefan\Desktop\jetbrains\parser\parser.cpp || cmake_object_order_depends_target_parser
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -IC:\Users\Stefan\Desktop\jetbrains\parser -IC:\Users\Stefan\Desktop\jetbrains\tokenizer
-  OBJECT_DIR = parser\CMakeFiles\parser.dir
-  OBJECT_FILE_DIR = parser\CMakeFiles\parser.dir
-  TARGET_COMPILE_PDB = parser\CMakeFiles\parser.dir\parser.pdb
-  TARGET_PDB = parser\parser.pdb
-
-
-# =============================================================================
-# Link build statements for STATIC_LIBRARY target parser
-
-
-#############################################
-# Link the static library parser\parser.lib
-
-build parser\parser.lib: CXX_STATIC_LIBRARY_LINKER__parser_Debug parser\CMakeFiles\parser.dir\parser.cpp.obj || tokenizer\tokenizer.lib
-  LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
-  LINK_FLAGS = /machine:x64
-  OBJECT_DIR = parser\CMakeFiles\parser.dir
-  POST_BUILD = cd .
-  PRE_LINK = cd .
-  TARGET_COMPILE_PDB = parser\CMakeFiles\parser.dir\parser.pdb
-  TARGET_FILE = parser\parser.lib
-  TARGET_PDB = parser\parser.pdb
-
-
-#############################################
-# Utility command for edit_cache
-
-build parser\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\jetbrains\out\build\x64-Debug\parser && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
-  DESC = No interactive CMake dialog available...
-  restat = 1
-
-build parser\edit_cache: phony parser\CMakeFiles\edit_cache.util
-
-
-#############################################
-# Utility command for rebuild_cache
-
-build parser\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\jetbrains\out\build\x64-Debug\parser && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Stefan\Desktop\jetbrains -BC:\Users\Stefan\Desktop\jetbrains\out\build\x64-Debug"
-  DESC = Running CMake to regenerate build system...
-  pool = console
-  restat = 1
-
-build parser\rebuild_cache: phony parser\CMakeFiles\rebuild_cache.util
-
-# =============================================================================
-# Write statements declared in CMakeLists.txt:
-# C:/Users/Stefan/Desktop/jetbrains/CMakeLists.txt
-# =============================================================================
-
-# =============================================================================
-# Object build statements for STATIC_LIBRARY target tokenizer
-
-
-#############################################
-# Order-only phony target for tokenizer
-
-build cmake_object_order_depends_target_tokenizer: phony || tokenizer\CMakeFiles\tokenizer.dir
-
-build tokenizer\CMakeFiles\tokenizer.dir\tokenizer.cpp.obj: CXX_COMPILER__tokenizer_unscanned_Debug C$:\Users\Stefan\Desktop\jetbrains\tokenizer\tokenizer.cpp || cmake_object_order_depends_target_tokenizer
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -IC:\Users\Stefan\Desktop\jetbrains\tokenizer
-  OBJECT_DIR = tokenizer\CMakeFiles\tokenizer.dir
-  OBJECT_FILE_DIR = tokenizer\CMakeFiles\tokenizer.dir
-  TARGET_COMPILE_PDB = tokenizer\CMakeFiles\tokenizer.dir\tokenizer.pdb
-  TARGET_PDB = tokenizer\tokenizer.pdb
-
-
-# =============================================================================
-# Link build statements for STATIC_LIBRARY target tokenizer
-
-
-#############################################
-# Link the static library tokenizer\tokenizer.lib
-
-build tokenizer\tokenizer.lib: CXX_STATIC_LIBRARY_LINKER__tokenizer_Debug tokenizer\CMakeFiles\tokenizer.dir\tokenizer.cpp.obj
-  LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
-  LINK_FLAGS = /machine:x64
-  OBJECT_DIR = tokenizer\CMakeFiles\tokenizer.dir
-  POST_BUILD = cd .
-  PRE_LINK = cd .
-  TARGET_COMPILE_PDB = tokenizer\CMakeFiles\tokenizer.dir\tokenizer.pdb
-  TARGET_FILE = tokenizer\tokenizer.lib
-  TARGET_PDB = tokenizer\tokenizer.pdb
-
-
-#############################################
-# Utility command for edit_cache
-
-build tokenizer\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\jetbrains\out\build\x64-Debug\tokenizer && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
-  DESC = No interactive CMake dialog available...
-  restat = 1
-
-build tokenizer\edit_cache: phony tokenizer\CMakeFiles\edit_cache.util
-
-
-#############################################
-# Utility command for rebuild_cache
-
-build tokenizer\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\jetbrains\out\build\x64-Debug\tokenizer && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Stefan\Desktop\jetbrains -BC:\Users\Stefan\Desktop\jetbrains\out\build\x64-Debug"
-  DESC = Running CMake to regenerate build system...
-  pool = console
-  restat = 1
-
-build tokenizer\rebuild_cache: phony tokenizer\CMakeFiles\rebuild_cache.util
-
-# =============================================================================
-# Write statements declared in CMakeLists.txt:
-# C:/Users/Stefan/Desktop/jetbrains/CMakeLists.txt
+# C:/Users/Stefan/Desktop/finallib/JSON-Parser-C-/CMakeLists.txt
 # =============================================================================
 
 # =============================================================================
@@ -240,11 +114,11 @@ build tokenizer\rebuild_cache: phony tokenizer\CMakeFiles\rebuild_cache.util
 
 build cmake_object_order_depends_target_json: phony || cmake_object_order_depends_target_parser cmake_object_order_depends_target_tokenizer
 
-build json\CMakeFiles\json.dir\json.cpp.obj: CXX_COMPILER__json_unscanned_Debug C$:\Users\Stefan\Desktop\jetbrains\json\json.cpp || cmake_object_order_depends_target_json
+build json\CMakeFiles\json.dir\src\json.cpp.obj: CXX_COMPILER__json_unscanned_Debug C$:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\src\json.cpp || cmake_object_order_depends_target_json
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -IC:\Users\Stefan\Desktop\jetbrains\json -IC:\Users\Stefan\Desktop\jetbrains\parser -IC:\Users\Stefan\Desktop\jetbrains\tokenizer
+  INCLUDES = -IC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\include -IC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\parser\include -IC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\parser\tokenizer\include
   OBJECT_DIR = json\CMakeFiles\json.dir
-  OBJECT_FILE_DIR = json\CMakeFiles\json.dir
+  OBJECT_FILE_DIR = json\CMakeFiles\json.dir\src
   TARGET_COMPILE_PDB = json\CMakeFiles\json.dir\json.pdb
   TARGET_PDB = json\json.pdb
 
@@ -256,7 +130,7 @@ build json\CMakeFiles\json.dir\json.cpp.obj: CXX_COMPILER__json_unscanned_Debug 
 #############################################
 # Link the static library json\json.lib
 
-build json\json.lib: CXX_STATIC_LIBRARY_LINKER__json_Debug json\CMakeFiles\json.dir\json.cpp.obj || parser\parser.lib tokenizer\tokenizer.lib
+build json\json.lib: CXX_STATIC_LIBRARY_LINKER__json_Debug json\CMakeFiles\json.dir\src\json.cpp.obj || json\parser\parser.lib json\parser\tokenizer\tokenizer.lib
   LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64
   OBJECT_DIR = json\CMakeFiles\json.dir
@@ -271,7 +145,7 @@ build json\json.lib: CXX_STATIC_LIBRARY_LINKER__json_Debug json\CMakeFiles\json.
 # Utility command for edit_cache
 
 build json\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\jetbrains\out\build\x64-Debug\json && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\out\build\x64-Debug\json && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -282,7 +156,7 @@ build json\edit_cache: phony json\CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build json\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\jetbrains\out\build\x64-Debug\json && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Stefan\Desktop\jetbrains -BC:\Users\Stefan\Desktop\jetbrains\out\build\x64-Debug"
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\out\build\x64-Debug\json && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Stefan\Desktop\finallib\JSON-Parser-C- -BC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -291,87 +165,213 @@ build json\rebuild_cache: phony json\CMakeFiles\rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/Users/Stefan/Desktop/jetbrains/CMakeLists.txt
+# C:/Users/Stefan/Desktop/finallib/JSON-Parser-C-/json/CMakeLists.txt
 # =============================================================================
 
 # =============================================================================
-# Object build statements for STATIC_LIBRARY target argument
+# Object build statements for STATIC_LIBRARY target parser
 
 
 #############################################
-# Order-only phony target for argument
+# Order-only phony target for parser
 
-build cmake_object_order_depends_target_argument: phony || cmake_object_order_depends_target_json cmake_object_order_depends_target_parser cmake_object_order_depends_target_tokenizer
+build cmake_object_order_depends_target_parser: phony || cmake_object_order_depends_target_tokenizer
 
-build argument\CMakeFiles\argument.dir\argument.cpp.obj: CXX_COMPILER__argument_unscanned_Debug C$:\Users\Stefan\Desktop\jetbrains\argument\argument.cpp || cmake_object_order_depends_target_argument
+build json\parser\CMakeFiles\parser.dir\src\parser.cpp.obj: CXX_COMPILER__parser_unscanned_Debug C$:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\parser\src\parser.cpp || cmake_object_order_depends_target_parser
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -IC:\Users\Stefan\Desktop\jetbrains\argument -IC:\Users\Stefan\Desktop\jetbrains\json -IC:\Users\Stefan\Desktop\jetbrains\parser -IC:\Users\Stefan\Desktop\jetbrains\tokenizer
-  OBJECT_DIR = argument\CMakeFiles\argument.dir
-  OBJECT_FILE_DIR = argument\CMakeFiles\argument.dir
-  TARGET_COMPILE_PDB = argument\CMakeFiles\argument.dir\argument.pdb
-  TARGET_PDB = argument\argument.pdb
+  INCLUDES = -IC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\parser\include -IC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\parser\tokenizer\include
+  OBJECT_DIR = json\parser\CMakeFiles\parser.dir
+  OBJECT_FILE_DIR = json\parser\CMakeFiles\parser.dir\src
+  TARGET_COMPILE_PDB = json\parser\CMakeFiles\parser.dir\parser.pdb
+  TARGET_PDB = json\parser\parser.pdb
 
 
 # =============================================================================
-# Link build statements for STATIC_LIBRARY target argument
+# Link build statements for STATIC_LIBRARY target parser
 
 
 #############################################
-# Link the static library argument\argument.lib
+# Link the static library json\parser\parser.lib
 
-build argument\argument.lib: CXX_STATIC_LIBRARY_LINKER__argument_Debug argument\CMakeFiles\argument.dir\argument.cpp.obj || json\json.lib parser\parser.lib tokenizer\tokenizer.lib
+build json\parser\parser.lib: CXX_STATIC_LIBRARY_LINKER__parser_Debug json\parser\CMakeFiles\parser.dir\src\parser.cpp.obj || json\parser\tokenizer\tokenizer.lib
   LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64
-  OBJECT_DIR = argument\CMakeFiles\argument.dir
+  OBJECT_DIR = json\parser\CMakeFiles\parser.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = argument\CMakeFiles\argument.dir\argument.pdb
-  TARGET_FILE = argument\argument.lib
-  TARGET_PDB = argument\argument.pdb
+  TARGET_COMPILE_PDB = json\parser\CMakeFiles\parser.dir\parser.pdb
+  TARGET_FILE = json\parser\parser.lib
+  TARGET_PDB = json\parser\parser.pdb
 
 
 #############################################
 # Utility command for edit_cache
 
-build argument\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\jetbrains\out\build\x64-Debug\argument && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+build json\parser\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\out\build\x64-Debug\json\parser && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
-build argument\edit_cache: phony argument\CMakeFiles\edit_cache.util
+build json\parser\edit_cache: phony json\parser\CMakeFiles\edit_cache.util
 
 
 #############################################
 # Utility command for rebuild_cache
 
-build argument\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\jetbrains\out\build\x64-Debug\argument && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Stefan\Desktop\jetbrains -BC:\Users\Stefan\Desktop\jetbrains\out\build\x64-Debug"
+build json\parser\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\out\build\x64-Debug\json\parser && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Stefan\Desktop\finallib\JSON-Parser-C- -BC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
 
-build argument\rebuild_cache: phony argument\CMakeFiles\rebuild_cache.util
+build json\parser\rebuild_cache: phony json\parser\CMakeFiles\rebuild_cache.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/Stefan/Desktop/finallib/JSON-Parser-C-/json/parser/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target tokenizer
+
+
+#############################################
+# Order-only phony target for tokenizer
+
+build cmake_object_order_depends_target_tokenizer: phony || json\parser\tokenizer\CMakeFiles\tokenizer.dir
+
+build json\parser\tokenizer\CMakeFiles\tokenizer.dir\src\tokenizer.cpp.obj: CXX_COMPILER__tokenizer_unscanned_Debug C$:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\parser\tokenizer\src\tokenizer.cpp || cmake_object_order_depends_target_tokenizer
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
+  INCLUDES = -IC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\parser\tokenizer\include
+  OBJECT_DIR = json\parser\tokenizer\CMakeFiles\tokenizer.dir
+  OBJECT_FILE_DIR = json\parser\tokenizer\CMakeFiles\tokenizer.dir\src
+  TARGET_COMPILE_PDB = json\parser\tokenizer\CMakeFiles\tokenizer.dir\tokenizer.pdb
+  TARGET_PDB = json\parser\tokenizer\tokenizer.pdb
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target tokenizer
+
+
+#############################################
+# Link the static library json\parser\tokenizer\tokenizer.lib
+
+build json\parser\tokenizer\tokenizer.lib: CXX_STATIC_LIBRARY_LINKER__tokenizer_Debug json\parser\tokenizer\CMakeFiles\tokenizer.dir\src\tokenizer.cpp.obj
+  LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  LINK_FLAGS = /machine:x64
+  OBJECT_DIR = json\parser\tokenizer\CMakeFiles\tokenizer.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_COMPILE_PDB = json\parser\tokenizer\CMakeFiles\tokenizer.dir\tokenizer.pdb
+  TARGET_FILE = json\parser\tokenizer\tokenizer.lib
+  TARGET_PDB = json\parser\tokenizer\tokenizer.pdb
+
+
+#############################################
+# Utility command for edit_cache
+
+build json\parser\tokenizer\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\out\build\x64-Debug\json\parser\tokenizer && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build json\parser\tokenizer\edit_cache: phony json\parser\tokenizer\CMakeFiles\edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build json\parser\tokenizer\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\out\build\x64-Debug\json\parser\tokenizer && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Stefan\Desktop\finallib\JSON-Parser-C- -BC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\out\build\x64-Debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build json\parser\tokenizer\rebuild_cache: phony json\parser\tokenizer\CMakeFiles\rebuild_cache.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/Stefan/Desktop/finallib/JSON-Parser-C-/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target arguments
+
+
+#############################################
+# Order-only phony target for arguments
+
+build cmake_object_order_depends_target_arguments: phony || cmake_object_order_depends_target_json cmake_object_order_depends_target_parser cmake_object_order_depends_target_tokenizer
+
+build arguments\CMakeFiles\arguments.dir\src\argument.cpp.obj: CXX_COMPILER__arguments_unscanned_Debug C$:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\arguments\src\argument.cpp || cmake_object_order_depends_target_arguments
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
+  INCLUDES = -IC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\arguments\include -IC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\arguments\..\json -IC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\include -IC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\parser\include -IC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\parser\tokenizer\include
+  OBJECT_DIR = arguments\CMakeFiles\arguments.dir
+  OBJECT_FILE_DIR = arguments\CMakeFiles\arguments.dir\src
+  TARGET_COMPILE_PDB = arguments\CMakeFiles\arguments.dir\arguments.pdb
+  TARGET_PDB = arguments\arguments.pdb
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target arguments
+
+
+#############################################
+# Link the static library arguments\arguments.lib
+
+build arguments\arguments.lib: CXX_STATIC_LIBRARY_LINKER__arguments_Debug arguments\CMakeFiles\arguments.dir\src\argument.cpp.obj || json\json.lib json\parser\parser.lib json\parser\tokenizer\tokenizer.lib
+  LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  LINK_FLAGS = /machine:x64
+  OBJECT_DIR = arguments\CMakeFiles\arguments.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_COMPILE_PDB = arguments\CMakeFiles\arguments.dir\arguments.pdb
+  TARGET_FILE = arguments\arguments.lib
+  TARGET_PDB = arguments\arguments.pdb
+
+
+#############################################
+# Utility command for edit_cache
+
+build arguments\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\out\build\x64-Debug\arguments && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build arguments\edit_cache: phony arguments\CMakeFiles\edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build arguments\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\out\build\x64-Debug\arguments && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Stefan\Desktop\finallib\JSON-Parser-C- -BC:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\out\build\x64-Debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build arguments\rebuild_cache: phony arguments\CMakeFiles\rebuild_cache.util
 
 # =============================================================================
 # Target aliases.
 
-build argument: phony argument\argument.lib
+build arguments: phony arguments\arguments.lib
 
-build argument.lib: phony argument\argument.lib
+build arguments.lib: phony arguments\arguments.lib
 
 build json: phony json\json.lib
 
 build json.lib: phony json\json.lib
 
-build json_eval: phony json_eval.exe
+build main: phony main.exe
 
-build parser: phony parser\parser.lib
+build parser: phony json\parser\parser.lib
 
-build parser.lib: phony parser\parser.lib
+build parser.lib: phony json\parser\parser.lib
 
-build tokenizer: phony tokenizer\tokenizer.lib
+build tokenizer: phony json\parser\tokenizer\tokenizer.lib
 
-build tokenizer.lib: phony tokenizer\tokenizer.lib
+build tokenizer.lib: phony json\parser\tokenizer\tokenizer.lib
 
 # =============================================================================
 # Folder targets.
@@ -379,37 +379,37 @@ build tokenizer.lib: phony tokenizer\tokenizer.lib
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug
+# Folder: C:/Users/Stefan/Desktop/finallib/JSON-Parser-C-/out/build/x64-Debug
 
-build all: phony json_eval.exe parser\all tokenizer\all json\all argument\all
-
-# =============================================================================
-
-#############################################
-# Folder: C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/argument
-
-build argument\all: phony argument\argument.lib
+build all: phony main.exe json\all arguments\all
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/json
+# Folder: C:/Users/Stefan/Desktop/finallib/JSON-Parser-C-/out/build/x64-Debug/arguments
 
-build json\all: phony json\json.lib
-
-# =============================================================================
-
-#############################################
-# Folder: C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/parser
-
-build parser\all: phony parser\parser.lib
+build arguments\all: phony arguments\arguments.lib
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/tokenizer
+# Folder: C:/Users/Stefan/Desktop/finallib/JSON-Parser-C-/out/build/x64-Debug/json
 
-build tokenizer\all: phony tokenizer\tokenizer.lib
+build json\all: phony json\json.lib json\parser\all
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/Stefan/Desktop/finallib/JSON-Parser-C-/out/build/x64-Debug/json/parser
+
+build json\parser\all: phony json\parser\parser.lib json\parser\tokenizer\all
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/Stefan/Desktop/finallib/JSON-Parser-C-/out/build/x64-Debug/json/parser/tokenizer
+
+build json\parser\tokenizer\all: phony json\parser\tokenizer\tokenizer.lib
 
 # =============================================================================
 # Built-in targets
@@ -418,14 +418,14 @@ build tokenizer\all: phony tokenizer\tokenizer.lib
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeDependentOption.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake C$:\Users\Stefan\Desktop\jetbrains\CMakeLists.txt C$:\Users\Stefan\Desktop\jetbrains\argument\CMakeLists.txt C$:\Users\Stefan\Desktop\jetbrains\json\CMakeLists.txt C$:\Users\Stefan\Desktop\jetbrains\parser\CMakeLists.txt C$:\Users\Stefan\Desktop\jetbrains\tokenizer\CMakeLists.txt C$:\Users\Stefan\Desktop\vcpkg\scripts\buildsystems\vcpkg.cmake CMakeCache.txt CMakeFiles\3.28.0-msvc1\CMakeCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeCXXCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeRCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeDependentOption.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake C$:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\CMakeLists.txt C$:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\arguments\CMakeLists.txt C$:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\CMakeLists.txt C$:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\parser\CMakeLists.txt C$:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\parser\tokenizer\CMakeLists.txt C$:\Users\Stefan\Desktop\vcpkg\scripts\buildsystems\vcpkg.cmake CMakeCache.txt CMakeFiles\3.28.0-msvc1\CMakeCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeCXXCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeRCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeDependentOption.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake C$:\Users\Stefan\Desktop\jetbrains\CMakeLists.txt C$:\Users\Stefan\Desktop\jetbrains\argument\CMakeLists.txt C$:\Users\Stefan\Desktop\jetbrains\json\CMakeLists.txt C$:\Users\Stefan\Desktop\jetbrains\parser\CMakeLists.txt C$:\Users\Stefan\Desktop\jetbrains\tokenizer\CMakeLists.txt C$:\Users\Stefan\Desktop\vcpkg\scripts\buildsystems\vcpkg.cmake CMakeCache.txt CMakeFiles\3.28.0-msvc1\CMakeCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeCXXCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeRCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeSystem.cmake: phony
+build C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeDependentOption.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake C$:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\CMakeLists.txt C$:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\arguments\CMakeLists.txt C$:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\CMakeLists.txt C$:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\parser\CMakeLists.txt C$:\Users\Stefan\Desktop\finallib\JSON-Parser-C-\json\parser\tokenizer\CMakeLists.txt C$:\Users\Stefan\Desktop\vcpkg\scripts\buildsystems\vcpkg.cmake CMakeCache.txt CMakeFiles\3.28.0-msvc1\CMakeCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeCXXCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeRCCompiler.cmake CMakeFiles\3.28.0-msvc1\CMakeSystem.cmake: phony
 
 
 #############################################

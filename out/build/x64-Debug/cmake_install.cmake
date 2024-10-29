@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/Stefan/Desktop/jetbrains
+# Install script for directory: C:/Users/Stefan/Desktop/finallib/JSON-Parser-C-
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Users/Stefan/Desktop/jetbrains/out/install/x64-Debug")
+  set(CMAKE_INSTALL_PREFIX "C:/Users/Stefan/Desktop/finallib/JSON-Parser-C-/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,10 +34,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/parser/cmake_install.cmake")
-  include("C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/tokenizer/cmake_install.cmake")
-  include("C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/json/cmake_install.cmake")
-  include("C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/argument/cmake_install.cmake")
+  include("C:/Users/Stefan/Desktop/finallib/JSON-Parser-C-/out/build/x64-Debug/json/cmake_install.cmake")
+  include("C:/Users/Stefan/Desktop/finallib/JSON-Parser-C-/out/build/x64-Debug/arguments/cmake_install.cmake")
 
 endif()
 
@@ -49,5 +47,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Stefan/Desktop/jetbrains/out/build/x64-Debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/Stefan/Desktop/finallib/JSON-Parser-C-/out/build/x64-Debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

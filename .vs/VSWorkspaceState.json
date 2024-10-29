@@ -4,15 +4,5 @@
       "out\\build\\x64-Debug",
       "out\\install\\x64-Debug"
     ]
-  },
-  "ExpandedNodes": [
-    "",
-    "\\argument",
-    "\\json",
-    "\\jsonfiles",
-    "\\parser",
-    "\\tokenizer"
-  ],
-  "SelectedNode": "\\jsonfiles\\fourth-test.json",
-  "PreviewInSolutionExplorer": false
+  }
 }
