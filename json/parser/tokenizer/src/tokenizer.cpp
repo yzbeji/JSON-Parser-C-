@@ -23,7 +23,7 @@ Tokenizer::Tokenizer(std::ifstream& jsonFile) : index(0)
 {
 	if (jsonFile.fail())
 	{
-		printf("File was not found");
+		throw std::runtime_error("File was not found");	
 		exit(-1);
 	}
 	else
@@ -166,11 +166,11 @@ void Tokenizer::Tokenize()
 				token.value = jsonString[this->index];
 				token.hasValue = true;
 				this->index++;
-				while ((jsonString[this->index] >= '0' && 
-					    jsonString[this->index] <= '9') || 
-					   (jsonString[this->index] == '.' && 
-					   (jsonString[this->index - 1] >= '0' && 
-						jsonString[this->index - 1] <= '9')))
+				while ((jsonString[this->index] >= '0' &&
+					jsonString[this->index] <= '9') ||
+					(jsonString[this->index] == '.' &&
+						(jsonString[this->index - 1] >= '0' &&
+							jsonString[this->index - 1] <= '9')))
 				{
 					token.value += jsonString[this->index];
 					this->index++;

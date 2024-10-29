@@ -92,7 +92,7 @@ public:
 			throw std::bad_variant_access();
 		}, value);
 	}
-	explicit operator double() const	
+	explicit operator double() const		
 	{
 		return std::visit([](auto&& arg) -> double {
 			if constexpr (std::is_same_v<std::decay_t<decltype(arg)>, double>)
