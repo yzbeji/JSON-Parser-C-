@@ -44,7 +44,7 @@ So... <br>
 => will result an object named Wrapper that has a variant type variable. (variant = the variable can be more than only one type) <br>
 => acces the string value (meaning the component) with casting. (Example: `(std::string)j["a"]["b"]` and it will result `"[2,3,{c:test},[11,12]]"`) <br>
 
-- determine the size of the object / array using function GetSize() function; <br>
+- determine the size of the object / array using function `GetSize()` function; <br>
 - cast also possible integers and doubles (Example: `(int)j["a"]["b"][0]` and it will result 2) <br>
 
 
