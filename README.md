@@ -47,6 +47,14 @@ So... <br>
 - determine the size of the object / array using function `GetSize()` function; <br>
 - cast also possible integers and doubles (Example: `(int)j["a"]["b"][0]` and it will result 2) <br>
 
+So... x2 <br>
+
+I have also implemented some functions using a separated class named arguments. Here's what you can do: <br>
+
+- size() => Implements GetSize for a json class but you need only json file / raw string and inside the brackets the argument. (Example: ```arg(size(a.b))``` outputs the number of the elements of the array)
+- max/min() => Determines the maximum/minimum element from the parameters inside the brackets separated by comma (Example: ```arg(max(a.b[0], a.b[1], -15)``` outputs 3 and yes, if it is not a json it will cast it to an integer)
+- just some nested jsons => show the values for arrays / objects or the value of a string / integer / double / bool value (Example: ```arg(a, a.b, a.b[3],..)``` outputs value of key ***a***, ***b*** and the array ***[11, 12]*** which is owned by the array value of ***b***  
+
 
 
 
