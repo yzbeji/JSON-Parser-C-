@@ -26,202 +26,100 @@ size_t argument::ExtractFunction()
 
 void argument::ParseFunctionArguments(const yzbeji::json& j)	
 {
-	std::vector<double>numbers;
-	unsigned int size = 0;
-	unsigned int counterArguments = 0;
-
+	const Wrapper initialWrapper = j.ReturnInitialObject();	
+	std::vector<double>numbers;		
+	std::vector<std::string>objects;	
 	if (ExtractFunction() == 0)
 	{
-		std::stringstream sstream(argumentString);
-		std::string currentArgument;
+		std::stringstream sstream(argumentString);		
+		std::string currentArgument;	
 		while (std::getline(sstream, currentArgument, ','))
 		{
-			Wrapper wrapper = j.ReturnInitialObject();	
-			const Wrapper initialWrapper = wrapper;
-			try
+			RemoveWhitespaces(currentArgument);
+			try 
 			{
-				RemoveWhitespaces(currentArgument);
-				double value = std::stod(currentArgument);
-				if (counterArguments == 0 && argumentType == "size")
-				{
-					printf("%s", "Size works only for json");
-					exit(-1);
-				}
-				else if (argumentType == "size" && counterArguments > 0)
-				{
-					printf("%s", "Only one argument allowed for size function \n");
-					exit(-1);		
-				}
-				else if (argumentType != "size")
-				{
-					numbers.push_back(value);
-					counterArguments++;
-				}
+				numbers.push_back(std::stod(currentArgument));	
 			}
-			catch (std::exception&)
+			catch (std::invalid_argument&)
 			{
-				if (argumentType == "size" && counterArguments > 0)
-				{
-					printf("%s", "Only one argument allowed for size function \n");
-					exit(-1);
-				}
-				size_t position = 0;
-				ParseObject(currentArgument, position, wrapper, initialWrapper);
-				if (argumentType == "min" || argumentType == "max")
-				{
-					numbers.push_back((double)(wrapper));
-				}
-				else if (argumentType == "size" && counterArguments == 0)
-				{
-					size = wrapper.GetSize();
-				}
+				objects.push_back(currentArgument);
 			}
-			counterArguments++;
 		}
-
-		if (numbers.empty() == false)
+		if (argumentType == "size" && (objects.size() == 0 || objects.size() > 1))
 		{
-			if (argumentType == "max")
+			throw std::runtime_error("Only one argument is allowed for size");
+		}
+		else if (argumentType == "size" && objects.size() == 1 && numbers.size() == 0)
+		{
+			Wrapper wrapper = j.ReturnInitialObject();	
+			size_t position = 0;	
+			ParseObject(objects[0], position, wrapper, initialWrapper);
+			std::cout << wrapper.GetSize() << std::endl;
+		}
+		else if ((argumentType == "min" || argumentType == "max") && (objects.size() > 0 || numbers.size() > 0))
+		{
+			if (objects.size() > 0)
 			{
-				std::cout << "Max value is: " << * std::max_element(numbers.begin(), numbers.end()) << std::endl;
+				std::vector<std::pair<Wrapper, size_t>> wrappers;
+				std::vector<std::future<void>> futures;
+				for (size_t i = 0; i < objects.size(); i++)
+				{
+					wrappers.push_back(std::make_pair(j.ReturnInitialObject(), 0));
+				}
+				for (size_t i = 0; i < objects.size(); i++)	
+				{
+					futures.push_back(std::async(std::launch::async, ParseObject, std::cref(objects[i]), std::ref(wrappers[i].second), std::ref(wrappers[i].first), std::cref(initialWrapper)));		
+				}
+				for (size_t i = 0; i < futures.size(); i++)
+				{
+					futures[i].get();	
+					numbers.push_back((double)(wrappers[i].first));	
+				}
+			}
+			if (argumentType == "max")	
+			{
+				std::cout << *std::max_element(numbers.begin(), numbers.end()) << std::endl;	
 			}
 			else
 			{
-				std::cout << "Min value is: " << *std::min_element(numbers.begin(), numbers.end()) << std::endl;
+				std::cout << *std::min_element(numbers.begin(), numbers.end()) << std::endl;	
 			}
 		}
-		if (argumentType == "size")
+		else if ((argumentType == "min" || argumentType == "max") && objects.size() == 0)
 		{
-			std::cout << "Size is: " << size << std::endl;
+			throw std::runtime_error("No arguments provided to the min / max function");
 		}
 	}
 	else
 	{
-		std::stringstream sstream(argumentString);
-		std::string currentArgument;
-		while (std::getline(sstream, currentArgument, ','))
+		std::stringstream sstream(argumentString);	
+		std::string currentArgument;	
+		while (std::getline(sstream, currentArgument, ','))	
 		{
-			Wrapper wrapper = j.ReturnInitialObject();	
-			const Wrapper initialWrapper = wrapper;
-			RemoveWhitespaces(currentArgument);
-			size_t position = 0;
-			ParseObject(currentArgument, position, wrapper, initialWrapper);
-			std::cout << (std::string)wrapper << std::endl << std::endl;	
-		}
-	}
-}
-
-void argument::ParseObject(const std::string& argument, size_t& position, Wrapper& wrapper, const Wrapper& initialWrapper)
-{
-	std::string component = "";
-	Wrapper* helper = nullptr;
-	while (position < argument.size())
-	{
-		switch (argument[position])
+			RemoveWhitespaces(currentArgument);	
+			objects.push_back(currentArgument);	
+		}	
+		if (objects.size() > 0)	
 		{
-			case '[':
+			std::vector<std::pair<Wrapper, size_t>> wrappers;	
+			std::vector<std::future<void>> futures;	
+			for (size_t i = 0; i < objects.size(); i++)	
 			{
-				if (component != "")
-				{
-					wrapper = wrapper[component.c_str()];
-					component.clear();
-					component = "";
-				}
-				helper = new Wrapper(initialWrapper);
-				bool isHelperModified = false;
-				int result = ParseArray(argument, ++position, (*helper), initialWrapper, isHelperModified);
-				wrapper = isHelperModified == true ? wrapper[static_cast<int>(*helper)] : wrapper[result];
-				delete helper;
-				break;
+				wrappers.push_back(std::make_pair(j.ReturnInitialObject(), 0));	
 			}
-			case '.':
-			{
-				if (component != "")
-				{
-					wrapper = wrapper[component.c_str()];
-					component.clear();
-					component = R"()";
-				}
-				position += 1;
-				break;
+			for (size_t i = 0; i < objects.size(); i++)	
+			{	
+				futures.push_back(std::async(std::launch::async, ParseObject, std::cref(objects[i]), std::ref(wrappers[i].second), std::ref(wrappers[i].first), std::cref(initialWrapper)));	
 			}
-			case ']':
+			for (size_t i = 0; i < futures.size(); i++)	
 			{
-				position += 1;	
-				break;
-			}
-			default:
-			{
-				component += argument[position];
-				position += 1;
-				break;
+				futures[i].get();	
+				std::cout << (std::string)wrappers[i].first << std::endl << std::endl;			
 			}
 		}
-	}
-	if (component != "")
-	{
-		wrapper = wrapper[component.c_str()];
-	}
-}
-
-int argument::ParseArray(const std::string& argument, size_t& position, Wrapper& wrapper, const Wrapper& initialWrapper, bool& isHelperModified)
-{
-	std::string component = "";
-	Wrapper* helper = nullptr;
-	while (position < argument.size() && argument[position] != ']')
-	{
-		switch (argument[position])
+		else
 		{
-			case '[':
-			{
-				if (component != "")
-				{
-					wrapper = wrapper[component.c_str()];
-					component.clear();
-					component = "";
-				}
-				helper = new Wrapper(initialWrapper);
-				bool secondIsHelperModified = false;
-				int result = ParseArray(argument, ++position, (*helper), initialWrapper, secondIsHelperModified);
-				wrapper = (secondIsHelperModified == true) ? wrapper[static_cast<int>(*helper)] : wrapper[result];
-				delete helper;
-				break;
-			}
-			case '.':
-			{
-				if (component != "")
-				{
-					wrapper = wrapper[component.c_str()];
-					component.clear();
-					component = "";
-					isHelperModified = true;
-				}
-				position += 1;
-				break;
-			}
-			case ']':
-			{
-				position += 1;
-				break;
-			}
-			default:
-			{
-				component += argument[position];
-				position++;
-				break;
-			}
+			throw std::runtime_error("No arguments provided");
 		}
-	}
-	try
-	{
-		if (position < argument.size() - 1)
-		{
-			position++;
-		}
-		return std::stoi(component);
-	}
-	catch (std::exception&)
-	{
-		return -1;
 	}
 }
