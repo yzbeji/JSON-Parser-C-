@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 doing dev stuff 
 =======
 Welcome to **yzbeji::json**, a lightweight and efficient JSON parsing library designed for C++ developers who need to easily integrate JSON handling into their applications. Whether you are developing desktop applications, embedded systems, or web services, yzbeji::json provides a simple and intuitive interface for parsing, manipulating, and serializing JSON data.
