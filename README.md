@@ -62,10 +62,3 @@ I have also implemented some functions using a separated class named arguments. 
 ***Updates*** 
 - Restructured and implemented multithreading for the arguments
 
-
-
-
-
-
-
->>>>>>> main
